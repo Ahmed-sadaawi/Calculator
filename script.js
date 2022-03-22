@@ -1,33 +1,36 @@
-const output = document.querySelector('[data-output]');
+const previousOperandElement = document.querySelector('.previous-operand');
+// const currentOperandElement = document.querySelector('.current-operand');
 const numberElement = document.querySelectorAll('[data-number]');
-const operatorElement = document.querySelectorAll('[data-operator]');
-const clearAll = document.querySelector('[data-clear-all]')
-const DEL = document.querySelector('[data-delete]');
+const operatorElement = document.querySelectorAll('[data-operation]');
+const deleteOne = document.querySelector('.calculator-grid .delete');
+const clearAll = document.querySelector('[data-clear-all]');
 const aquel = document.querySelector('[data-aquel]');
 
-// loop on each numbers;
-numberElement.forEach(numberTarget => {
-    numberTarget.onclick = function () {
-        output.innerHTML += this.innerHTML;
+// loop on numbers;
+for (i = 0; i < numberElement.length; i++) {
+    numberElement[i].onclick = function () {
+        previousOperandElement.innerHTML += this.innerHTML;
+    };
+
+}
+
+// loop on operations;
+for (i = 0; i < operatorElement.length; i++) {
+    operatorElement[i].onclick = function () {
+        previousOperandElement.innerHTML += this.innerHTML;
     }
-});
-// loop on each operators;
-operatorElement.forEach(operator => {
-    operator.onclick = function () {
-        output.innerHTML += this.innerHTML;
-    }
-})
-// aquels ;
+}
+
+// aquel ;
 aquel.onclick = function () {
-    output.innerHTML = eval(output.innerHTML);
+    previousOperandElement.innerHTML = eval(previousOperandElement.innerHTML)
 }
 
-
-// clear all the output;
+// delete last character;
+deleteOne.onclick = function () {
+    previousOperandElement.innerHTML = previousOperandElement.innerHTML.toString().slice(0, -1);
+}
+// clear all ;
 clearAll.onclick = function () {
-    output.innerHTML = "";
-}
-// delete one of the output;
-DEL.onclick = function () {
-    output.innerHTML = output.innerHTML.toString().slice(0, -1);
+    previousOperandElement.innerHTML = previousOperandElement.innerHTML = "";
 }

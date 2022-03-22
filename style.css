@@ -1,53 +1,68 @@
+*::after,*::before{
+    box-sizing: border-box;
+    font-family: Gotham Rounded, sans-serif;
+    font-weight: normal;
+}
 body{
+    width: 100%;
+    min-height: 100vh;
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
-    background: linear-gradient(to right, #0259fcf8, #09a39cb2);
-    min-height: 100vh;
+    background:linear-gradient(to right, #0259fcf8, #09a39cb2);
 }
-.calculator-gird{
+.calculator-grid{
     display: grid;
-    justify-content: center;
     grid-template-columns: repeat(4, 6rem);
-    grid-template-rows: minmax(150px, auto) repeat(5,6rem);
+    grid-template-rows: minmax(120px,auto) repeat(5, 6rem);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     border: 1px solid #fff;
-}
-.output{
+    border-radius: 7px;
+    box-shadow: .3rem .3rem 3rem #00e1fffb;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+}.output{
     grid-column: 1 / -1;
-    background:linear-gradient(to right,#00eeff8f,#ce00f769);
-    color: #fff;
-    font-size: 2rem;
+    background:linear-gradient(to right, #00eeff8f,#ce00f769);
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    border-bottom:1px solid #fff;
+    font-size: 2rem;
+    color: white;
     padding: 10px;
-    align-items: center;
+}
+.previous-operand{
+    padding-bottom: 10px;
 }
 .span-two{
     grid-column: span 2;
 }
-.calculator-gird > button{
-    background: none;
+.calculator-grid > button{
+    border: 0.1px solid #fff;
+    outline: none;
     font-size: 2rem;
-    color: #fff;
-    border: .3px solid #fff;
+    color: white;
+    background: none;
 }
-.calculator-gird > button:hover{
-    background-color: rgba(255, 255, 255, 0.288);
+.calculator-grid > button:hover{
+    background: rgba(255, 255, 255, 0.25);
 }
-.calculator-gird .red:hover{
-    background-color: red;
+.calculator-grid .clear-all:hover{
+    background-color: #ff0000;
 }
-.calculator-gird .green:hover{
+.calculator-grid .hover:hover{
     background-color: green;
 }
-.calculator-gird .blue:hover{
-    background-color: rgba(0, 0, 255, 0.479);
+.calculator-grid .operation:hover{
+    background-color: #0026ffb0;
 }
